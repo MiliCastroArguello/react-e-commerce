@@ -1,39 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import {Item} from './Item';
-
-
+import {useParams} from "react-router-dom";
+import Loading from "../Loading";
 const ItemListContainer = (props) => {
 
-  const [productos, setData] = useState([]);
+  const { marca } = useParams();
+  const [prendas, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const filter = props.filter;
 
   useEffect(() => {
       setTimeout(() => {
-        fetch('../data.json')
+        fetch('../data/data.json')
           .then(response => response.json())
           .then((jsonData) => {
-            if(filter) {
-              setData(jsonData.filter(producto => producto[filter] === true))
-            } else {
-              setData(jsonData)
+            switch (filter) {
+              case 'oferta':
+                setData(jsonData.filter(prenda => prenda[filter] === true))
+                break;
+              case 'marca': {
+                setData(jsonData.filter(prenda => prenda[filter] === marca))
+                break;
+              }
+              default: {
+                setData(jsonData)
+              }
             }
           })
           .catch((error) => console.log(error))
           .finally(() => {setLoading(false)})
       }, 2000)
-  }, [filter]);
+  }, [filter, marca]);
 
   if (loading) {
-    return <div className='loading'>Loading...</div>;
+    return <Loading />
   }
 
   return (
     <div className='container'>
       <div className="row">
-        {productos.map(
-          producto => (
-            <Item key= {producto.id} id= {producto.id} nombre = {producto.nombre} precio = {producto.precio} img = {producto.img} oferta_tipo = {producto.oferta_tipo} oferta = {producto.oferta} />
+        {prendas.map(
+          prenda => (
+            <Item key= {prenda.id} id= {prenda.id} nombre = {prenda.nombre} precio = {prenda.precio} img = {prenda.img} marca = {prenda.marca} oferta_tipo = {prenda.oferta_tipo} oferta = {prenda.oferta} />
           )
         )}
       </div>
@@ -42,7 +50,6 @@ const ItemListContainer = (props) => {
 }
 
 export default ItemListContainer
-
 
 
 
