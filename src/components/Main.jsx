@@ -12,10 +12,10 @@ export const Main = () => {
     <main>
       <Routes>
         <Route exact path='/' element={<Landing />} />
-        <Route exact path='/vinos' element={<ItemListContainer />} />
-        <Route exact path='/vinos/:id' element={<ItemDetailContainer />} />
+        <Route exact path='/prendas' element={<ItemListContainer />} />
+        <Route exact path='/prendas/:id' element={<ItemDetailContainer />} />
         <Route exact path='/ofertas' element={<ItemListContainer filter={'oferta'} />} />
-        <Route exact path='/cepas/:cepa' element={<ItemListContainer filter={'cepa'} />} />
+        <Route exact path='/marcas/:marca' element={<ItemListContainer filter={'marca'} />} />
         <Route exact path='/carrito' element={<Cart/>}/>
       </Routes>
     </main>
