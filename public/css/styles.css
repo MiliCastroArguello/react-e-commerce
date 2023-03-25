@@ -59,3 +59,7 @@ p{
   background-color: #000;
   color: #fff;
 }
+body.dark-mode {
+  background-color: #222;
+  color: #fff;
+}

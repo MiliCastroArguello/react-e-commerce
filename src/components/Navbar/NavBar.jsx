@@ -23,6 +23,8 @@ const NavBar = () => {
 
   function toggleDarkMode() {
     setIsDarkMode(!isDarkMode);
+    document.body.classList.toggle('dark-mode');
+
   }
 
   return (
