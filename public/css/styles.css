@@ -39,7 +39,7 @@ p{
 }
 
 #foto-portada {
-  width: 100%;
+  width: 30%;
 }
 
 .loading-container {
@@ -48,4 +48,14 @@ p{
 }
 #loading-gif {
   width: 100px;
+}
+
+.navbar {
+  background-color: #fff;
+  color: #000;
+}
+
+.navbar.dark-mode {
+  background-color: #000;
+  color: #fff;
 }

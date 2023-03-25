@@ -6,7 +6,6 @@ import Landing from './Landing';
 import Cart from './Cart';
 
 
-
 export const Main = () => {
   return (
     <main>
@@ -17,7 +16,9 @@ export const Main = () => {
         <Route exact path='/ofertas' element={<ItemListContainer filter={'oferta'} />} />
         <Route exact path='/marcas/:marca' element={<ItemListContainer filter={'marca'} />} />
         <Route exact path='/carrito' element={<Cart/>}/>
+
       </Routes>
     </main>
   )
 }
+

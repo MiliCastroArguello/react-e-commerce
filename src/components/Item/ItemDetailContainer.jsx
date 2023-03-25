@@ -33,7 +33,7 @@ export const ItemDetailContainer = () => {
         <img src= {`/imagenes/${prenda.img}`} className="card-img-top mt-2" alt="imagen de prendas"/>
         <div className="card-body">
           <h5 className="card-title"> {prenda.nombre}</h5>
-          <p className="card-text">Precio: ${prenda.marca}</p>
+          <p className="card-text">Precio: ${prenda.precio}</p>
           <p className="card-text">Marca: {prenda.marca}</p>
           <Link className="btn btn-primary agregar">
             Agregar al carrito
