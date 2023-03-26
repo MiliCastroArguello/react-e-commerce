@@ -3,8 +3,8 @@ import {ItemDetailContainer} from './Item/ItemDetailContainer'
 import ItemListContainer from './Item/ItemListContainer'
 import { Routes, Route } from 'react-router-dom';
 import Landing from './Landing';
-import Cart from './Cart';
-import { CartProvider } from './Context/CartContex';
+import Cart from './Cart/Cart';
+import { CartProvider } from './Context/CartContext';
 
 
 

@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react'
 import {Link, useParams} from 'react-router-dom'
 import SaleTag from "../SaleTag/SaleTag";
 import Loading from "../Loading";
-import CartContext from '../Context/CartContex';
+import CartContext from '../Context/CartContext';
 import { getPrendas } from '../../Database/dataBase';
 
 export const ItemDetailContainer = () => {
@@ -35,9 +35,11 @@ export const ItemDetailContainer = () => {
           <h5 className="card-title"> {prenda.nombre}</h5>
           <p className="card-text">Precio: ${prenda.precio}</p>
           <p className="card-text">Marca: {prenda.marca}</p>
-          <Link onClick={addProduct (prenda)} className="btn btn-primary agregar">
+          
+          <Link onClick={() => addProduct(prenda)} className="btn btn-primary agregar">
             Agregar al carrito
           </Link>
+          
         </div>
       </div>
     </div>
