@@ -21,28 +21,21 @@ const CartProvider = (props) => {
     setCartItems(newCartItems);
   }
 
-  const addProduct =(item, quantity) =>{
-    if(isInCart(item.id)){
-      setCartItems(cartItems.map(product =>{
-        product.id === item.id ?
-          {...product , quantity: product.quantity + quantity} 
-        : 
-          product
-      }));
-    }else{
-      setCartItems ([...cartItems, {...item, quantity}]);
-    }
+  const addProduct =(item) =>{
+    setCartItems([...cartItems, item])
+    /* setTotalPrice(totalPrice + getSalePrice(item))
+    setFinalPrice(totalPrice + getSalePrice(item) + config.deliveries[0].cost) */
   }
 
   const getTotalQuantity = () => {
     let cant = 0
-    cart.forEach((e) => cant += e.quantity)
+    cartItems.forEach((e) => cant += e.quantity)
     return cant
   };
 
   const getTotal = () => {
     let total = 0
-    cart.forEach((e) => total += (e.quantity*e.price))
+    cartItems.forEach((e) => total += (e.quantity*e.price))
     return total        
   };
 

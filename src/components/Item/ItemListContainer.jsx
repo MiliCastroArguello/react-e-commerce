@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {Item} from './Item';
 import {useParams} from "react-router-dom";
 import Loading from "../Loading";
+import { getPrendas } from '../../Database/dataBase';
 const ItemListContainer = (props) => {
 
   const { marca } = useParams();
@@ -10,9 +11,7 @@ const ItemListContainer = (props) => {
   const filter = props.filter;
 
   useEffect(() => {
-      setTimeout(() => {
-        fetch('../data/data.json')
-          .then(response => response.json())
+     getPrendas()
           .then((jsonData) => {
             switch (filter) {
               case 'oferta':
@@ -29,7 +28,7 @@ const ItemListContainer = (props) => {
           })
           .catch((error) => console.log(error))
           .finally(() => {setLoading(false)})
-      }, 2000)
+  
   }, [filter, marca]);
 
   if (loading) {

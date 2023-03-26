@@ -1,24 +1,24 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {Link, useParams} from 'react-router-dom'
 import SaleTag from "../SaleTag/SaleTag";
 import Loading from "../Loading";
+import CartContext from '../Context/CartContex';
+import { getPrendas } from '../../Database/dataBase';
 
 export const ItemDetailContainer = () => {
 
   const {id} = useParams()
   const [prenda, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const addProduct = useContext (CartContext).addProduct
 
   useEffect(() => {
-    setTimeout(() => {
-      fetch('../data/data.json')
-        .then(response => response.json())
+    getPrendas ()
         .then((jsonData) => {
           setData(jsonData.find(prenda => prenda.id === parseInt(id)))
         })
         .catch((error) => console.log(error))
         .finally(() => {setLoading(false)})
-    }, 2000)
   }, [id]);
 
   if (loading) {
@@ -35,7 +35,7 @@ export const ItemDetailContainer = () => {
           <h5 className="card-title"> {prenda.nombre}</h5>
           <p className="card-text">Precio: ${prenda.precio}</p>
           <p className="card-text">Marca: {prenda.marca}</p>
-          <Link className="btn btn-primary agregar">
+          <Link onClick={addProduct (prenda)} className="btn btn-primary agregar">
             Agregar al carrito
           </Link>
         </div>

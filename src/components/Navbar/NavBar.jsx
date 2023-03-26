@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import CartWidget from '../CartWidget';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { getPrendas } from '../../Database/dataBase';
 
 const NavBar = () => {
   const [marcas, setData] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    fetch('../data/data.json')
-      .then((response) => response.json())
+    getPrendas()
       .then((jsonData) => {
         const marcas = [];
         jsonData.forEach((prenda) => {
@@ -23,7 +23,7 @@ const NavBar = () => {
 
   function toggleDarkMode() {
     setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle('dark-mode');
+      document.body.classList.toggle('dark-mode');
 
   }
 
