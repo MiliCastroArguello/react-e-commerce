@@ -33,7 +33,7 @@ const CartProvider = (props) => {
     } else {
       setCart([...cart, { ...item, quantity }]);
     }
-    getTotalQuantity();
+    (getTotalQuantity()); 
   };
   
   const removeFromCart = (id) => {

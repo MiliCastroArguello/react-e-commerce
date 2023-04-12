@@ -33,6 +33,7 @@ p{
 .carrito-icon {
   color: rgba(0,0,0,0.65);
   text-decoration: none;
+  padding:50px;
 }
 .carrito-icon:hover {
   color: rgba(0,0,0,0.8);

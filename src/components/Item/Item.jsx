@@ -23,3 +23,5 @@ export const Item = ({id, img, nombre, precio, marca, oferta, oferta_tipo}) => {
     </div>
     )
 }
+
+export default Item;
