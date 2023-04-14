@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
-import {Link, useParams} from 'react-router-dom'
+import {Link,useParams} from 'react-router-dom'
 import SaleTag from "../SaleTag/SaleTag";
 import Loading from "../Loading";
 import CartContext from '../Context/CartContext';
@@ -36,7 +36,7 @@ export const ItemDetailContainer = () => {
           <p className="card-text">Precio: ${prenda.precio}</p>
           <p className="card-text">Marca: {prenda.marca}</p>
           
-          <Link onClick={() => addProduct(prenda)} className="btn btn-primary agregar">
+          <Link onClick={() => addProduct(prenda)} className="btn btn-primary agregar" to={`../Cart/Cart/${id}`}>
             Agregar al carrito
           </Link>
           
