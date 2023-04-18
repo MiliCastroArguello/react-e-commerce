@@ -19,7 +19,9 @@ const Cart = () => {
       <ul>
         {cart.map((prenda) => (
             <li key={prenda.id}>
-            <span>{prenda.nombre} = ${prenda.precio} </span>            
+            <img src= {`/imagenes/${prenda.img}`} className="imagenCarrito" alt="imagen de prendas"/>
+
+            <span>{prenda.nombre} = ${prenda.precio} </span>        
           </li>
         ))}
       </ul>
