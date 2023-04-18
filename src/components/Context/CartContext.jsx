@@ -28,7 +28,7 @@ const CartProvider = (props) => {
         if (cartItem.id === item.id) {
           return { ...cartItem, quantity: cartItem.quantity + quantity };
         }
-        return cartItem;
+        return cart;
       }));
     } else {
       setCart([...cart, { ...item, quantity }]);
