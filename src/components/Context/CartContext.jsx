@@ -42,13 +42,13 @@ const CartProvider = (props) => {
   };
 
   const getTotalQuantity = () => {
-    let cant = 
+    let cant = 0
     cart.forEach((item) => cant += item.quantity)
     return cant
   };
 
   const getTotal = () => {
-    let total = 
+    let total = 0
     cart.forEach((item) => total += (item.quantity*item.price))
     return total        
   };
