@@ -19,8 +19,7 @@ const Cart = () => {
       <ul>
         {cart.map((prenda) => (
             <li key={prenda.id}>
-            <span>{prenda.nombre} = ${prenda.precio}</span>
-            <button onClick={() => handleRemove(prenda.id)}>X</button>
+            <span>{prenda.nombre} = ${prenda.precio} </span>            
           </li>
         ))}
       </ul>

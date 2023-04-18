@@ -3,12 +3,12 @@ import {Item} from './Item';
 import {useParams} from "react-router-dom";
 import Loading from "../Loading";
 import { getPrendas } from '../../Database/dataBase';
-const ItemListContainer = (props) => {
+const ItemListContainer = (propsUni) => {
 
   const { marca } = useParams();
   const [prendas, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const filter = props.filter;
+  const filter = propsUni.filter;
 
   useEffect(() => {
      getPrendas()

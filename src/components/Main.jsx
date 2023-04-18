@@ -7,7 +7,6 @@ import Cart from './Cart/Cart';
 import { CartProvider } from './Context/CartContext';
 
 
-
 export const Main = () => {
   return (
     <CartProvider>

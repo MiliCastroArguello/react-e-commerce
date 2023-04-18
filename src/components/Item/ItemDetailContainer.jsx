@@ -36,7 +36,7 @@ export const ItemDetailContainer = () => {
           <p className="card-text">Precio: ${prenda.precio}</p>
           <p className="card-text">Marca: {prenda.marca}</p>
           
-          <Link onClick={() => addProduct(prenda)} className="btn btn-primary agregar" to={`../Cart/Cart/${id}`}>
+          <Link onClick={() => addProduct(prenda)} className="btn btn-primary agregar" to={`/carrito/`}>
             Agregar al carrito
           </Link>
           
