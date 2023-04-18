@@ -33,6 +33,7 @@ const CartProvider = (props) => {
     } else {
       setCart([...cart, { ...item, quantity }]);
     }
+    
     (getTotalQuantity(item.quantity)); 
   };
   
@@ -49,7 +50,7 @@ const CartProvider = (props) => {
 
   const getTotal = () => {
     let total = 0
-    cart.forEach((item) => total += (item.quantity*item.price))
+    cart.forEach((item) => total += (item.quantity*item.precio))
     return total        
   };
 

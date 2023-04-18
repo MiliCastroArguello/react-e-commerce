@@ -24,7 +24,7 @@ const Cart = () => {
         ))}
       </ul>
       <h5>Total Items: {getTotalQuantity()}</h5>
-      <h5>Total Precio: {getTotal()}</h5>
+      <h5>Total Precio: $ {getTotal()}</h5>
       
       <button onClick={handleClear}>Vaciar Carrito</button>
     </div>
