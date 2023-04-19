@@ -1,16 +1,15 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link,useParams} from 'react-router-dom'
 import SaleTag from "../SaleTag/SaleTag";
 import Loading from "../Loading";
-import CartContext from '../Context/CartContext';
+import {useCartContext} from "../Context/CartContext";
 import { getPrendas } from '../../Database/dataBase';
 
 export const ItemDetailContainer = () => {
-
+  const cart =  useCartContext()
   const {id} = useParams()
   const [prenda, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const addProduct = useContext (CartContext).addProduct
 
   useEffect(() => {
     getPrendas ()
@@ -36,7 +35,7 @@ export const ItemDetailContainer = () => {
           <p className="card-text">Precio: ${prenda.precio}</p>
           <p className="card-text">Marca: {prenda.marca}</p>
           
-          <Link onClick={() => addProduct(prenda)} className="btn btn-primary agregar" to={`/carrito/`}>
+          <Link onClick={() => cart.handleAdd(prenda)} className="btn btn-primary agregar">
             Agregar al carrito
           </Link>
           

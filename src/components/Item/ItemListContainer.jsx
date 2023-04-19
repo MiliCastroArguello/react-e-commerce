@@ -40,7 +40,7 @@ const ItemListContainer = (propsUni) => {
       <div className="row">
         {prendas.map(
           prenda => (
-            <Item key= {prenda.id} id= {prenda.id} nombre = {prenda.nombre} precio = {prenda.precio} img = {prenda.img} marca = {prenda.marca} oferta_tipo = {prenda.oferta_tipo} oferta = {prenda.oferta} />
+            <Item key={prenda.id + Math.random(0,100)} id={prenda.id} nombre={prenda.nombre} precio={prenda.precio} img={prenda.img} marca={prenda.marca} oferta_tipo={prenda.oferta_tipo} oferta={prenda.oferta} />
           )
         )}
       </div>

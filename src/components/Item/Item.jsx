@@ -5,7 +5,6 @@ import SaleTag from "../SaleTag/SaleTag";
 
 
 export const Item = ({id, img, nombre, precio, marca, oferta, oferta_tipo}) => {
-  console.log(oferta)
   return (
     <div className="col-3">
       <div className="card">

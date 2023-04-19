@@ -12,9 +12,6 @@ code {
     monospace;
 }
 
-p{
-  font-size: 10px;
-}
 
 .sale-tag {
   position: absolute;
@@ -33,7 +30,7 @@ p{
 .carrito-icon {
   color: rgba(0,0,0,0.65);
   text-decoration: none;
-  padding:50px;
+  padding:5px;
 }
 .carrito-icon:hover {
   color: rgba(0,0,0,0.8);
@@ -57,14 +54,30 @@ p{
 }
 
 .navbar.dark-mode {
-  background-color: #000;
-  color: #fff;
+  background-color: #000 !important;
+  color: #fff !important;
 }
 body.dark-mode {
   background-color: #222;
   color: #fff;
 }
 .imagenCarrito {
-  width: 30%;
-  
+  max-width: 60px;
+}
+
+.dark-mode .navbar * {
+  color: white;
+}
+
+.dark-mode-toggle {
+  border: none;
+  background-color: transparent;
+}
+.dark-mode-toggle img{
+  width: 20px;
+}
+
+.removeItem {
+  font-weight: bold;
+  cursor: pointer;
 }
