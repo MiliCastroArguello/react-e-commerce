@@ -1,35 +1,64 @@
-import React, { useContext } from "react";
-import  CartContext from "../Context/CartContext";
+import React, {useState} from "react";
+import {useCartContext} from "../Context/CartContext";
+import {Button, CloseButton, Modal, Offcanvas} from "react-bootstrap";
+import {LinkContainer} from "react-router-bootstrap";
 
 const Cart = () => {
+  const cart = useCartContext()
 
-  const { cart, addProduct, isInCart, clearCart, removeFromCart, getTotalQuantity, getTotal } = useContext(CartContext);
+  const [modalShow, setShow] = useState(false);
 
-  const handleRemove = (id) => {
-    removeFromCart(id);
-  };
-
-  const handleClear = () => {
-    clearCart();
-  };
+  const handleCloseModal = () => setShow(false);
+  const handleShowModal = () => setShow(true);
 
   return (
-    <div>
-      <h3>Carrito de Compras</h3>
-      <ul>
-        {cart.map((prenda) => (
-            <li key={prenda.id}>
-            <img src= {`/imagenes/${prenda.img}`} className="imagenCarrito" alt="imagen de prendas"/>
+    <>
+      <Offcanvas show={cart.show} onHide={cart.handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Carrito de Compras</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          {cart.cartItems.length > 0 ? (
+            <>
+              <ul>
+                {cart.cartItems.map((prenda, index) => (
 
-            <span>{prenda.nombre} = ${prenda.precio} </span>        
-          </li>
-        ))}
-      </ul>
-      <h5>Total Items: {getTotalQuantity()}</h5>
-      <h5>Total Precio: $ {getTotal()}</h5>
-      
-      <button onClick={handleClear}>Vaciar Carrito</button>
-    </div>
+                  <li key={index}>
+                    <img src= {`/imagenes/${prenda.img}`} className="imagenCarrito" alt="imagen de prendas"/>
+
+                    <span>{prenda.nombre} = ${prenda.precio} </span><CloseButton onClick={()=>cart.handleRemove(prenda)} />
+                  </li>
+                ))}
+              </ul>
+              <h5>Total Items: {cart.cartItems.length}</h5>
+              <h5>Total Precio: $ {cart.totalPrice}</h5>
+
+              <Button onClick={()=>cart.resetCart()} variant="secondary">Vaciar Carrito</Button>{' '}
+              <Button onClick={handleShowModal} variant="primary">Confirmar y comprar</Button>{' '}
+            </>
+          ) : (
+            <div> Tu carrito está vacío </div>
+          )}
+        </Offcanvas.Body>
+      </Offcanvas>
+
+      <Modal show={modalShow} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Compra realizada!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Gracias por comprar con nosotros! Te enviaremos un mail con los detalles de tu compra y la factura.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Cancelar
+          </Button>
+          <LinkContainer to={'/'}>
+            <Button variant="primary"  onClick={()=>{cart.resetCart(); handleCloseModal(); cart.handleClose()}}>
+              Confirmar
+            </Button>
+          </LinkContainer>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 
